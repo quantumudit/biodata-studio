@@ -1,0 +1,38 @@
+name: Feature Request
+description: Suggest a new capability or improvement.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have an idea for improving Biodata Studio? Describe it below.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Describe the situation or limitation that motivated this request.
+      placeholder: "There is no way to add a second photo, so users who want a casual photo alongside their formal one cannot do so."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: How would you like it to work? Mention any layout or config details if you have them.
+      placeholder: "Add an optional second photo upload in PhotoTab that renders in a designated slot in FullLayout."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any other approaches you considered, and why you prefer this one.
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Links, screenshots, or anything else relevant.
