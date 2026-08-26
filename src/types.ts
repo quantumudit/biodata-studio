@@ -1,15 +1,25 @@
-export interface PersonalInfo {
+export interface BasePersonalInfo {
   name: string;
   age: number;
   dob: string;
   height: string;
   weight: string;
   complexion: string;
+}
+
+export interface HinduPersonalInfo extends BasePersonalInfo {
   religion: string;
   caste: string;
   gotra: string;
   moonSign: string;
   nakshatra: string;
+}
+
+export interface MuslimPersonalInfo extends BasePersonalInfo {
+  sect: string;
+  maslak: string;
+  religiosity: string;
+  mehrPreference: string;
 }
 
 export interface ProfessionalInfo {
@@ -38,16 +48,28 @@ export interface ContactInfo {
 }
 
 export interface BiodiversityData {
-  personal: PersonalInfo;
+  personal: HinduPersonalInfo;
   professional: ProfessionalInfo;
   family: FamilyInfo;
   contact: ContactInfo;
   partnerPreferences: string;
-  image: string | null; // Single photo as requested
+  image: string | null;
 }
 
+export interface MuslimBiodataData {
+  personal: MuslimPersonalInfo;
+  professional: ProfessionalInfo;
+  family: FamilyInfo;
+  contact: ContactInfo;
+  partnerPreferences: string;
+  image: string | null;
+}
+
+export type AnyBiodataData = BiodiversityData | MuslimBiodataData;
+
 export type LayoutOption = 'full' | 'snapshot';
-export type DesignTheme = 'natural' | 'royal' | 'minimalist' | 'sunset';
+export type DesignTheme = 'natural' | 'royal' | 'minimalist' | 'sunset' | 'emerald' | 'sapphire';
+export type ReligionTemplate = 'hindu' | 'muslim' | 'christian';
 
 export interface ThemeStyleTokens {
   cardBg: string;
