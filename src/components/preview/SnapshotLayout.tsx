@@ -1,18 +1,26 @@
 import React from 'react';
-import type { BiodiversityData, DesignTheme, ThemeStyleTokens } from '../../types';
+import type { AnyBiodataData, HinduPersonalInfo, MuslimPersonalInfo, DesignTheme, ReligionTemplate, ThemeStyleTokens } from '../../types';
 import { ThemeOrnament } from './shared/ThemeOrnament';
 import { ThemeAvatarPlaceholder } from './shared/ThemeAvatarPlaceholder';
 import { SnapshotDetailBlock } from './shared/DetailBlock';
 import { THEME_CONFIG } from '../../data/themeConfig';
 
 interface SnapshotLayoutProps {
-  data: BiodiversityData;
+  data: AnyBiodataData;
   theme: DesignTheme;
+  religionTemplate: ReligionTemplate;
 }
 
-export const SnapshotLayout: React.FC<SnapshotLayoutProps> = ({ data, theme }) => {
+export const SnapshotLayout: React.FC<SnapshotLayoutProps> = ({ data, theme, religionTemplate }) => {
   const { personal, professional, family, contact, image } = data;
   const styles: ThemeStyleTokens = THEME_CONFIG[theme];
+
+  const hinduPersonal = personal as HinduPersonalInfo;
+  const muslimPersonal = personal as MuslimPersonalInfo;
+
+  const footerText = religionTemplate === 'muslim'
+    ? 'We warmly welcome family introductions and Nikah coordination.'
+    : 'We warmly invite matching family proposals or horoscope coordination.';
 
   return (
     <div
@@ -109,11 +117,23 @@ export const SnapshotLayout: React.FC<SnapshotLayoutProps> = ({ data, theme }) =
 
             <div className="space-y-3.5 bg-[#FFFFFF]/45 p-4 rounded-xl border border-stone-200/60 flex-1 flex flex-col justify-center min-h-0 shadow-2xs">
               <div className="grid grid-cols-2 gap-y-3.5 gap-x-2">
-                <SnapshotDetailBlock label="Caste / Gotra" value={`${personal.caste}${personal.gotra ? ` (${personal.gotra})` : ''}`} theme={theme} />
-                <SnapshotDetailBlock label="Sibling Info" value={family.siblings} theme={theme} />
-                <SnapshotDetailBlock label="Rashi / Moon Sign" value={personal.moonSign} theme={theme} />
-                <SnapshotDetailBlock label="Birth Nakshatra" value={personal.nakshatra} theme={theme} />
-                <SnapshotDetailBlock label="Complexion" value={personal.complexion} theme={theme} />
+                {religionTemplate === 'hindu' ? (
+                  <>
+                    <SnapshotDetailBlock label="Caste / Gotra" value={`${hinduPersonal.caste}${hinduPersonal.gotra ? ` (${hinduPersonal.gotra})` : ''}`} theme={theme} />
+                    <SnapshotDetailBlock label="Sibling Info" value={family.siblings} theme={theme} />
+                    <SnapshotDetailBlock label="Rashi / Moon Sign" value={hinduPersonal.moonSign} theme={theme} />
+                    <SnapshotDetailBlock label="Birth Nakshatra" value={hinduPersonal.nakshatra} theme={theme} />
+                    <SnapshotDetailBlock label="Complexion" value={personal.complexion} theme={theme} />
+                  </>
+                ) : (
+                  <>
+                    <SnapshotDetailBlock label="Sect" value={muslimPersonal.sect} theme={theme} />
+                    <SnapshotDetailBlock label="Maslak" value={muslimPersonal.maslak} theme={theme} />
+                    <SnapshotDetailBlock label="Religious Practice" value={muslimPersonal.religiosity} theme={theme} />
+                    <SnapshotDetailBlock label="Mehr Preference" value={muslimPersonal.mehrPreference} theme={theme} />
+                    <SnapshotDetailBlock label="Complexion" value={personal.complexion} theme={theme} />
+                  </>
+                )}
                 <div className="col-span-2 border-t border-dashed border-stone-200/60 pt-3">
                   <SnapshotDetailBlock label="Corporate Vocation" value={`${professional.occupation} at ${professional.company}`} theme={theme} />
                 </div>
@@ -124,7 +144,7 @@ export const SnapshotLayout: React.FC<SnapshotLayoutProps> = ({ data, theme }) =
         </div>
 
         <div className={`text-center pt-2.5 border-t ${styles.stoneHr} text-[8.5px] uppercase tracking-widest opacity-85`}>
-          <span>We warmly invite matching family proposals or horoscope coordination.</span>
+          <span>{footerText}</span>
         </div>
 
       </div>

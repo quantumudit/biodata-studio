@@ -1,18 +1,25 @@
 import React from 'react';
-import type { BiodiversityData, DesignTheme, ThemeStyleTokens } from '../../types';
+import type { AnyBiodataData, HinduPersonalInfo, MuslimPersonalInfo, DesignTheme, ReligionTemplate, ThemeStyleTokens } from '../../types';
 import { ThemeOrnament } from './shared/ThemeOrnament';
 import { ThemeAvatarPlaceholder } from './shared/ThemeAvatarPlaceholder';
 import { DetailBlock } from './shared/DetailBlock';
+import { HinduPersonalBlock } from './shared/HinduPersonalBlock';
+import { MuslimPersonalBlock } from './shared/MuslimPersonalBlock';
 import { THEME_CONFIG } from '../../data/themeConfig';
 
 interface FullLayoutProps {
-  data: BiodiversityData;
+  data: AnyBiodataData;
   theme: DesignTheme;
+  religionTemplate: ReligionTemplate;
 }
 
-export const FullLayout: React.FC<FullLayoutProps> = ({ data, theme }) => {
+export const FullLayout: React.FC<FullLayoutProps> = ({ data, theme, religionTemplate }) => {
   const { personal, professional, family, contact, partnerPreferences, image } = data;
   const styles: ThemeStyleTokens = THEME_CONFIG[theme];
+
+  const footerText = religionTemplate === 'muslim'
+    ? 'To coordinate a family introduction or request further conversation, you are kindly welcome to reach out.'
+    : 'To coordinate horoscope checks or request further conversation, you are kindly welcome to reach out.';
 
   return (
     <div
@@ -86,14 +93,9 @@ export const FullLayout: React.FC<FullLayoutProps> = ({ data, theme }) => {
                 </h3>
                 <span className={`h-[1px] flex-1 ${styles.stoneHr}`} />
               </div>
-              <div className="grid grid-cols-2 gap-y-3 gap-x-4">
-                <DetailBlock label="Date of Birth & Age" value={`${personal.dob || '—'} (${personal.age} Years)`} styles={styles} />
-                <DetailBlock label="Height & Weight" value={`${personal.height} • ${personal.weight}`} styles={styles} />
-                <DetailBlock label="Religion & Caste" value={`${personal.religion} • ${personal.caste}`} styles={styles} />
-                <DetailBlock label="Gotra Lineage" value={personal.gotra} styles={styles} />
-                <DetailBlock label="Moon Sign (Rashi)" value={personal.moonSign} styles={styles} />
-                <DetailBlock label="Birth Nakshatra" value={personal.nakshatra} styles={styles} />
-              </div>
+              {religionTemplate === 'hindu'
+                ? <HinduPersonalBlock personal={personal as HinduPersonalInfo} styles={styles} />
+                : <MuslimPersonalBlock personal={personal as MuslimPersonalInfo} styles={styles} />}
             </div>
 
             <div className="space-y-2">
@@ -168,7 +170,7 @@ export const FullLayout: React.FC<FullLayoutProps> = ({ data, theme }) => {
         )}
 
         <div className={`text-center pt-3 text-[9px] uppercase tracking-[0.2em] opacity-80 border-t ${styles.stoneHr}`}>
-          To coordinate horoscope checks or request further conversation, you are kindly welcome to reach out.
+          {footerText}
         </div>
 
       </div>
