@@ -37,6 +37,12 @@ export const SnapshotDetailBlock: React.FC<SnapshotDetailBlockProps> = ({ label,
   } else if (theme === 'minimalist') {
     sLabelFont = 'font-modern text-[9px] font-bold uppercase tracking-[0.15em] text-[#666666]';
     sValueFont = 'font-sans font-semibold text-[12.5px] text-[#171717]';
+  } else if (theme === 'emerald') {
+    sLabelFont = 'font-sans text-[9.5px] uppercase tracking-[0.16em] text-[#3D7A5A]';
+    sValueFont = 'font-editorial font-medium text-[15px] text-[#0D2B1D]';
+  } else if (theme === 'sapphire') {
+    sLabelFont = 'font-sans text-[9.5px] uppercase tracking-[0.16em] text-[#4A6FA5]';
+    sValueFont = 'font-editorial font-medium text-[15px] text-[#0A1A2D]';
   } else {
     sLabelFont = 'font-sans text-[10px] uppercase tracking-[0.13em] text-[#B87A68]';
     sValueFont = 'font-editorial font-medium text-[15px] text-[#3D2721]';
