@@ -1,0 +1,39 @@
+{
+  "personal": {
+    "name": "Arjun Sharma",
+    "age": 30,
+    "dob": "January 1995",
+    "height": "5 ft 10 inch (178 cm)",
+    "weight": "72 Kg",
+    "complexion": "Wheatish",
+    "religion": "Hindu",
+    "caste": "Brahmin",
+    "gotra": "Kashyap",
+    "moonSign": "Aries (Mesh)",
+    "nakshatra": "Ashwini"
+  },
+  "professional": {
+    "education": "B.Tech in Computer Science & MBA in Finance",
+    "occupation": "Senior Software Engineer",
+    "company": "Tech Solutions Pvt. Ltd.",
+    "income": "INR 18,00,000+ per annum",
+    "location": "Bengaluru, Karnataka (Open to relocate)"
+  },
+  "family": {
+    "fatherName": "Ramesh Sharma",
+    "fatherOccupation": "Retired Bank Manager",
+    "motherName": "Sunita Sharma",
+    "motherOccupation": "Homemaker",
+    "siblings": "One Elder Brother (Married)",
+    "familyType": "Nuclear, Middle Class",
+    "nativePlace": "Jaipur, Rajasthan",
+    "currentLocation": "Bengaluru, Karnataka"
+  },
+  "contact": {
+    "phone": "+91 98765 00000",
+    "email": "arjun.sharma@example.com",
+    "address": "123, Sample Layout, Koramangala, Bengaluru, Karnataka - 560034"
+  },
+  "partnerPreferences": "Looking for an educated, warm-hearted, and family-oriented partner who values mutual respect, open communication, and shared life goals.",
+  "image": null
+}

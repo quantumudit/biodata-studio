@@ -1,0 +1,36 @@
+{
+  "personal": [
+    { "section": "personal", "field": "name",       "label": "Candidate Full Name",  "type": "text",   "colSpan": 1 },
+    { "section": "personal", "field": "dob",        "label": "Date of Birth",        "type": "text",   "colSpan": 1, "placeholder": "e.g. 18th June 1995" },
+    { "section": "personal", "field": "age",        "label": "Age",                  "type": "number", "colSpan": 1 },
+    { "section": "personal", "field": "height",     "label": "Height",               "type": "text",   "colSpan": 1 },
+    { "section": "personal", "field": "weight",     "label": "Weight",               "type": "text",   "colSpan": 1 },
+    { "section": "personal", "field": "complexion", "label": "Complexion",           "type": "text",   "colSpan": 1 },
+    { "section": "personal", "field": "caste",      "label": "Caste / Community",    "type": "text",   "colSpan": 1 },
+    { "section": "personal", "field": "moonSign",   "label": "Moon Sign (Rashi)",    "type": "text",   "colSpan": 1 },
+    { "section": "personal", "field": "nakshatra",  "label": "Nakshatra",            "type": "text",   "colSpan": 1 },
+    { "section": "personal", "field": "gotra",      "label": "Gotra",                "type": "text",   "colSpan": 1 },
+    { "section": "personal", "field": "religion",   "label": "Belief / Religion",    "type": "text",   "colSpan": 2 }
+  ],
+  "professional": [
+    { "section": "professional", "field": "education",  "label": "Education Details",   "type": "text", "colSpan": 1 },
+    { "section": "professional", "field": "occupation", "label": "Job Occupation",       "type": "text", "colSpan": 1 },
+    { "section": "professional", "field": "company",    "label": "Corporate Company",    "type": "text", "colSpan": 2 },
+    { "section": "professional", "field": "income",     "label": "Annual Income",        "type": "text", "colSpan": 1 },
+    { "section": "professional", "field": "location",   "label": "Job/Work Location",    "type": "text", "colSpan": 2 }
+  ],
+  "family": [
+    { "section": "family", "field": "fatherName",       "label": "Father Name",           "type": "text", "colSpan": 1 },
+    { "section": "family", "field": "fatherOccupation", "label": "Father's Occupation",   "type": "text", "colSpan": 1 },
+    { "section": "family", "field": "motherName",       "label": "Mother Name",           "type": "text", "colSpan": 1 },
+    { "section": "family", "field": "motherOccupation", "label": "Mother's Occupation",   "type": "text", "colSpan": 1 },
+    { "section": "family", "field": "siblings",         "label": "Siblings Details",      "type": "text", "colSpan": 2 },
+    { "section": "family", "field": "nativePlace",      "label": "Native Place",          "type": "text", "colSpan": 1, "placeholder": "e.g. Kolkata, West Bengal" },
+    { "section": "family", "field": "currentLocation",  "label": "Current Residing City", "type": "text", "colSpan": 1, "placeholder": "e.g. Kolkata, West Bengal" }
+  ],
+  "contact": [
+    { "section": "contact", "field": "phone",   "label": "Phone",             "type": "text",     "colSpan": 1, "placeholder": "+91 xxxxx xxxxx" },
+    { "section": "contact", "field": "email",   "label": "Email Address",     "type": "email",    "colSpan": 1, "placeholder": "example@gmail.com" },
+    { "section": "contact", "field": "address", "label": "Full Home Address", "type": "textarea", "colSpan": 2, "rows": 2 }
+  ]
+}
