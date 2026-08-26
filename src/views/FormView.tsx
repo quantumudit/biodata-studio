@@ -1,21 +1,23 @@
 import React from 'react';
-import type { BiodiversityData, LayoutOption } from '../types';
+import type { AnyBiodataData, LayoutOption, ReligionTemplate } from '../types';
 import { LayoutSelector } from '../components/studio/LayoutSelector';
 import { ControlPanel } from '../components/form/ControlPanel';
 
 interface FormViewProps {
-  data: BiodiversityData;
+  data: AnyBiodataData;
   layout: LayoutOption;
-  onDataChange: React.Dispatch<React.SetStateAction<BiodiversityData>>;
+  religionTemplate: ReligionTemplate;
+  onDataChange: React.Dispatch<React.SetStateAction<AnyBiodataData>>;
   onLayoutChange: (layout: LayoutOption) => void;
+  onReligionChange: (religion: ReligionTemplate) => void;
   onProceed: () => void;
 }
 
-export const FormView: React.FC<FormViewProps> = ({ data, layout, onDataChange, onLayoutChange, onProceed }) => (
+export const FormView: React.FC<FormViewProps> = ({ data, layout, religionTemplate, onDataChange, onLayoutChange, onReligionChange, onProceed }) => (
   <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start animate-fade-in print:hidden">
 
     <div className="lg:col-span-4 space-y-6">
-      <LayoutSelector layout={layout} onLayoutChange={onLayoutChange} onProceedToPreview={onProceed} />
+      <LayoutSelector layout={layout} onLayoutChange={onLayoutChange} religionTemplate={religionTemplate} onReligionChange={onReligionChange} onProceedToPreview={onProceed} />
       <div className="p-4 bg-white/60 border border-stone-200 rounded-2xl flex gap-3 text-xs text-stone-600 leading-relaxed shadow-sm">
         <span className="text-xl">💡</span>
         <p>
@@ -28,7 +30,7 @@ export const FormView: React.FC<FormViewProps> = ({ data, layout, onDataChange, 
       <h2 className="text-lg font-serif font-bold text-stone-900 border-b border-stone-100 pb-3 mb-5">
         Customize Registry Fields
       </h2>
-      <ControlPanel data={data} onChange={onDataChange} />
+      <ControlPanel data={data} religionTemplate={religionTemplate} onChange={onDataChange} />
       <div className="mt-8 pt-4 border-t border-stone-100 flex justify-end">
         <button
           onClick={onProceed}
