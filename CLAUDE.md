@@ -103,6 +103,14 @@ App.tsx
 - **PNG**: `html-to-image` (`toPng`) targets `#biodata-print-section` at 2.2× pixel ratio. Background color comes from `THEME_CONFIG[theme].exportBgColor`.
 - **PDF**: `window.print()` — layout components use `print:` Tailwind variants to swap pixel dimensions for `mm`-based print sizes.
 
+## Deployment
+
+- **GitHub Pages**: `.github/workflows/deploy.yml` builds and deploys on every push to `main`.
+  `vite.config.ts` sets `base: '/biodata-studio/'` when `GITHUB_ACTIONS=true` (injected
+  automatically by the runner). Locally, `base` stays `/`. If the repo is ever renamed,
+  update the base string in `vite.config.ts` to match.
+- **Live URL**: https://quantumudit.github.io/biodata-studio/
+
 ## Docker
 
 Multi-stage build: `node:22-alpine` compiles to `dist/`, then `nginx:alpine` serves it. `nginx.conf` includes a `try_files` SPA fallback. Runs on port 8080 via `docker compose up --build`.

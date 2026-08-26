@@ -2,6 +2,8 @@
 
 A client-side matrimonial biodata generator built with React 19, TypeScript, Vite, and Tailwind CSS v4. Fill in your details, pick a theme, and export a print-ready A4 PDF or a square image card — no server, no sign-up, no data leaving your browser.
 
+**Live demo:** https://quantumudit.github.io/biodata-studio/
+
 ---
 
 ## Features
@@ -59,6 +61,21 @@ docker compose up --build
 docker build -t biodata-studio .
 docker run -p 8080:80 biodata-studio
 ```
+
+---
+
+## GitHub Pages Deployment
+
+The app deploys automatically to GitHub Pages on every push to `main` via `.github/workflows/deploy.yml`.
+
+To enable it on a new repo:
+1. Push the repo to GitHub
+2. Go to **Settings > Pages > Source** and select **GitHub Actions**
+3. The next push to `main` will build and deploy automatically
+
+The live URL will be: `https://<your-username>.github.io/biodata-studio/`
+
+> If you rename the repo, update the `base` path in `vite.config.ts` to match.
 
 ---
 
