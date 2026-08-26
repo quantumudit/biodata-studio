@@ -1,29 +1,49 @@
 import React, { useState, useEffect } from 'react';
-import type { LayoutOption, DesignTheme } from './types';
+import type { LayoutOption, DesignTheme, ReligionTemplate } from './types';
 import { useBiodataStorage } from './hooks/useBiodataStorage';
+import { useMuslimBiodataStorage } from './hooks/useMuslimBiodataStorage';
 import { AppHeader } from './components/layout/AppHeader';
 import { StepIndicator } from './components/layout/StepIndicator';
 import { FormView } from './views/FormView';
 import { PreviewView } from './views/PreviewView';
-import { THEME_CONFIG } from './data/themeConfig';
+import { THEME_CONFIG, AVAILABLE_THEMES } from './data/themeConfig';
 import { toPng } from 'html-to-image';
 
 export default function App() {
-  const [biodata, setBiodata] = useBiodataStorage();
+  const [hinduBiodata, setHinduBiodata] = useBiodataStorage();
+  const [muslimBiodata, setMuslimBiodata] = useMuslimBiodataStorage();
   const [layout, setLayout] = useState<LayoutOption>('full');
   const [theme, setTheme] = useState<DesignTheme>('natural');
+  const [religionTemplate, setReligionTemplate] = useState<ReligionTemplate>('hindu');
   const [currentStep, setCurrentStep] = useState<'form' | 'preview'>('form');
   const [isDownloading, setIsDownloading] = useState(false);
   const [isInIframe, setIsInIframe] = useState(false);
+
+  const activeBiodata = religionTemplate === 'hindu' ? hinduBiodata : muslimBiodata;
+  const activeSetBiodata = religionTemplate === 'hindu' ? setHinduBiodata : setMuslimBiodata;
 
   useEffect(() => {
     setIsInIframe(window.self !== window.top);
   }, []);
 
+  // Auto-switch theme when religion changes if current theme isn't available for the new religion
+  useEffect(() => {
+    const allowed = AVAILABLE_THEMES[religionTemplate];
+    if (!allowed.includes(theme)) {
+      setTheme(allowed[0]);
+    }
+  }, [religionTemplate]);
+
+  const handleReligionChange = (religion: ReligionTemplate) => {
+    setReligionTemplate(religion);
+  };
+
   const handleReset = () => {
+    const storageKey = religionTemplate === 'hindu'
+      ? 'matrimony_biodata_perfect_v2'
+      : 'matrimony_muslim_biodata_v1';
     if (window.confirm("Restore default sample data? Any uploaded photo or customized text will be replaced.")) {
-      // Trigger hook reset by clearing storage — reload will seed from defaultBiodata.json
-      localStorage.removeItem('matrimony_biodata_perfect_v2');
+      localStorage.removeItem(storageKey);
       window.location.reload();
     }
   };
@@ -46,7 +66,7 @@ export default function App() {
         cacheBust: true,
       });
       const link = document.createElement('a');
-      link.download = `${biodata.personal.name || 'Matrimonials'}_Biodata_${fileSuffix}.png`;
+      link.download = `${activeBiodata.personal.name || 'Matrimonials'}_Biodata_${fileSuffix}.png`;
       link.href = dataUrl;
       link.click();
     } catch (error) {
@@ -67,28 +87,31 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#F7F5F0] text-stone-800 pb-12 print:bg-white print:pb-0">
-      <AppHeader name={biodata.personal.name} onReset={handleReset} />
+      <AppHeader name={activeBiodata.personal.name} onReset={handleReset} />
       <div className="max-w-7xl mx-auto px-4 mt-6 print:hidden">
         <StepIndicator
           currentStep={currentStep}
           onStepChange={setCurrentStep}
-          hasName={!!biodata.personal.name}
+          hasName={!!activeBiodata.personal.name}
         />
       </div>
       <main className="max-w-7xl mx-auto px-4 mt-6 print:mt-0 print:px-0">
         {currentStep === 'form' ? (
           <FormView
-            data={biodata}
+            data={activeBiodata}
             layout={layout}
-            onDataChange={setBiodata}
+            religionTemplate={religionTemplate}
+            onDataChange={activeSetBiodata as any}
             onLayoutChange={setLayout}
+            onReligionChange={handleReligionChange}
             onProceed={() => setCurrentStep('preview')}
           />
         ) : (
           <PreviewView
-            data={biodata}
+            data={activeBiodata}
             layout={layout}
             theme={theme}
+            religionTemplate={religionTemplate}
             isDownloading={isDownloading}
             isInIframe={isInIframe}
             onLayoutChange={setLayout}
