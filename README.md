@@ -111,10 +111,10 @@ docker compose up --build     # http://localhost:8080
 
 ### Upcoming improvements
 
-- **Snapshot card layout** -- fix content bleeding outside the 700x700px card boundary
+- [ ] **Snapshot card layout** -- fix content bleeding outside the 700x700px card boundary
   and ensure long field values wrap correctly instead of overflowing; affects edge cases
   in certain theme + content length combinations
-- **Placeholder-based form defaults** -- replace the pre-filled sample data with
+- [ ] **Placeholder-based form defaults** -- replace the pre-filled sample data with
   placeholder text so users can start typing immediately without having to clear existing
   values first
 
