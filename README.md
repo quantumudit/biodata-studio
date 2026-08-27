@@ -109,6 +109,17 @@ docker compose up --build     # http://localhost:8080
 
 ## Future Scope
 
+### Upcoming improvements
+
+- **Snapshot card layout** -- fix content bleeding outside the 700x700px card boundary
+  and ensure long field values wrap correctly instead of overflowing; affects edge cases
+  in certain theme + content length combinations
+- **Placeholder-based form defaults** -- replace the pre-filled sample data with
+  placeholder text so users can start typing immediately without having to clear existing
+  values first
+
+### On the roadmap
+
 Additional design themes may be added over time. New religion or community templates
 can also be introduced -- the architecture is built for it: only the Personal section
 fields and preview block differ per template; everything else is shared.
