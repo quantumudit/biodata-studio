@@ -1,14 +1,16 @@
 import React from 'react';
 import { Sparkles, ArrowLeft } from 'lucide-react';
-import type { BiodiversityData, LayoutOption, DesignTheme } from '../types';
+import type { AnyBiodataData, LayoutOption, DesignTheme, ReligionTemplate } from '../types';
 import { BiodataCard } from '../components/preview/BiodataCard';
 import { ThemeSelector } from '../components/studio/ThemeSelector';
 import { ExportPanel } from '../components/studio/ExportPanel';
+import { AVAILABLE_THEMES } from '../data/themeConfig';
 
 interface PreviewViewProps {
-  data: BiodiversityData;
+  data: AnyBiodataData;
   layout: LayoutOption;
   theme: DesignTheme;
+  religionTemplate: ReligionTemplate;
   isDownloading: boolean;
   isInIframe: boolean;
   onLayoutChange: (layout: LayoutOption) => void;
@@ -19,7 +21,7 @@ interface PreviewViewProps {
 }
 
 export const PreviewView: React.FC<PreviewViewProps> = ({
-  data, layout, theme, isDownloading, isInIframe,
+  data, layout, theme, religionTemplate, isDownloading, isInIframe,
   onLayoutChange, onThemeChange, onDownloadPng, onPrint, onBack,
 }) => (
   <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start animate-fade-in">
@@ -40,6 +42,7 @@ export const PreviewView: React.FC<PreviewViewProps> = ({
           layout={layout}
           onThemeChange={onThemeChange}
           onLayoutChange={onLayoutChange}
+          availableThemes={AVAILABLE_THEMES[religionTemplate]}
         />
 
         <ExportPanel
@@ -74,7 +77,7 @@ export const PreviewView: React.FC<PreviewViewProps> = ({
 
         <div className="w-full overflow-x-auto flex justify-center py-2 bg-stone-50/50 rounded-2xl border border-stone-100 p-4 print:border-0 print:p-0 print:bg-transparent">
           <div className="min-w-fit flex justify-center">
-            <BiodataCard data={data} layout={layout} theme={theme} />
+            <BiodataCard data={data} layout={layout} theme={theme} religionTemplate={religionTemplate} />
           </div>
         </div>
 

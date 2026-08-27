@@ -1,0 +1,14 @@
+{
+  "personal": [
+    { "section": "personal", "field": "name",           "label": "Candidate Full Name",     "type": "text",   "colSpan": 1 },
+    { "section": "personal", "field": "dob",            "label": "Date of Birth",            "type": "text",   "colSpan": 1, "placeholder": "e.g. 18th June 1996" },
+    { "section": "personal", "field": "age",            "label": "Age",                      "type": "number", "colSpan": 1 },
+    { "section": "personal", "field": "height",         "label": "Height",                   "type": "text",   "colSpan": 1 },
+    { "section": "personal", "field": "weight",         "label": "Weight",                   "type": "text",   "colSpan": 1 },
+    { "section": "personal", "field": "complexion",     "label": "Complexion",               "type": "text",   "colSpan": 1 },
+    { "section": "personal", "field": "sect",           "label": "Sect",                     "type": "text",   "colSpan": 1, "placeholder": "e.g. Sunni, Shia" },
+    { "section": "personal", "field": "maslak",         "label": "Maslak / School",          "type": "text",   "colSpan": 1, "placeholder": "e.g. Hanafi, Shafi'i, Maliki" },
+    { "section": "personal", "field": "religiosity",    "label": "Religious Practice",       "type": "text",   "colSpan": 2, "placeholder": "e.g. Practising, Namazi, Hafiz-e-Quran" },
+    { "section": "personal", "field": "mehrPreference", "label": "Mehr Preference",          "type": "text",   "colSpan": 2, "placeholder": "e.g. As per Sunnah, Mutual agreement" }
+  ]
+}

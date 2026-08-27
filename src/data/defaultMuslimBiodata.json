@@ -1,0 +1,38 @@
+{
+  "personal": {
+    "name": "Zaid Rahman",
+    "age": 28,
+    "dob": "March 1996",
+    "height": "5 ft 9 inch (175 cm)",
+    "weight": "70 Kg",
+    "complexion": "Fair",
+    "sect": "Sunni",
+    "maslak": "Hanafi",
+    "religiosity": "Practising, Offers regular Salah",
+    "mehrPreference": "As per mutual agreement"
+  },
+  "professional": {
+    "education": "B.E. in Computer Engineering & MBA",
+    "occupation": "Software Engineer",
+    "company": "Tech Innovations Pvt. Ltd.",
+    "income": "INR 14,00,000+ per annum",
+    "location": "Hyderabad, Telangana (Open to relocate)"
+  },
+  "family": {
+    "fatherName": "Abdul Rahman",
+    "fatherOccupation": "Retired Government Officer",
+    "motherName": "Fatima Begum",
+    "motherOccupation": "Homemaker",
+    "siblings": "One Younger Sister (Unmarried)",
+    "familyType": "Nuclear, Middle Class",
+    "nativePlace": "Hyderabad, Telangana",
+    "currentLocation": "Hyderabad, Telangana"
+  },
+  "contact": {
+    "phone": "+91 98765 00001",
+    "email": "zaid.rahman@example.com",
+    "address": "12, Sample Gardens, Banjara Hills, Hyderabad, Telangana - 500034"
+  },
+  "partnerPreferences": "Seeking a pious, educated, and family-oriented partner who values Deen, mutual respect, and building a home grounded in Islamic principles.",
+  "image": null
+}

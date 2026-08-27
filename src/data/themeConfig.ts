@@ -1,4 +1,4 @@
-import type { ThemeConfigMap } from '../types';
+import type { ThemeConfigMap, ReligionTemplate, DesignTheme } from '../types';
 
 export const THEME_CONFIG: ThemeConfigMap = {
   natural: {
@@ -77,4 +77,48 @@ export const THEME_CONFIG: ThemeConfigMap = {
     valueFont: 'font-editorial font-medium text-[13.5px]',
     labelFont: 'font-sans text-[8px] uppercase tracking-[0.13em]',
   },
+  emerald: {
+    label: 'Emerald Dusk',
+    swatchColor: '#1B6B45',
+    exportBgColor: '#F4FAF7',
+    hoverBorderClass: 'hover:border-[#1B6B45]',
+    cardBg: 'bg-[#F4FAF7]',
+    outerBorder: 'border-[#1B6B45]',
+    innerBorder: 'border-[#1B6B45]/15',
+    primaryText: 'text-[#0D2B1D]',
+    accentText: 'text-[#1B6B45]',
+    descriptorLabel: 'text-[#3D7A5A]',
+    stoneHr: 'border-[#1B6B45]/12',
+    bottomBand: 'bg-[#1B6B45]',
+    boxBg: 'bg-[#1B6B45]/5',
+    boxOuterBorder: 'border-[#1B6B45]/12',
+    headingFont: 'font-royal font-semibold tracking-wider',
+    valueFont: 'font-editorial font-medium text-[13.5px]',
+    labelFont: 'font-sans text-[7.5px] uppercase tracking-[0.18em]',
+  },
+  sapphire: {
+    label: 'Sapphire Night',
+    swatchColor: '#1A3A5C',
+    exportBgColor: '#F5F7FB',
+    hoverBorderClass: 'hover:border-[#1A3A5C]',
+    cardBg: 'bg-[#F5F7FB]',
+    outerBorder: 'border-[#1A3A5C]',
+    innerBorder: 'border-[#1A3A5C]/15',
+    primaryText: 'text-[#0A1A2D]',
+    accentText: 'text-[#1A3A5C]',
+    descriptorLabel: 'text-[#4A6FA5]',
+    stoneHr: 'border-[#1A3A5C]/12',
+    bottomBand: 'bg-[#1A3A5C]',
+    boxBg: 'bg-[#1A3A5C]/5',
+    boxOuterBorder: 'border-[#1A3A5C]/12',
+    headingFont: 'font-royal font-semibold tracking-wider',
+    valueFont: 'font-editorial font-medium text-[13.5px]',
+    labelFont: 'font-sans text-[7.5px] uppercase tracking-[0.18em]',
+  },
+};
+
+export const AVAILABLE_THEMES: Record<ReligionTemplate, DesignTheme[]> = {
+  hindu:    ['natural', 'royal', 'minimalist', 'sunset'],
+  muslim:   ['natural', 'minimalist', 'emerald', 'sapphire'],
+  christian: ['natural', 'royal', 'minimalist', 'sunset'],
 };

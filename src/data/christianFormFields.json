@@ -1,0 +1,15 @@
+{
+  "personal": [
+    { "section": "personal", "field": "name",         "label": "Candidate Full Name",   "type": "text",   "colSpan": 1 },
+    { "section": "personal", "field": "dob",          "label": "Date of Birth",          "type": "text",   "colSpan": 1, "placeholder": "e.g. 18th June 1996" },
+    { "section": "personal", "field": "age",          "label": "Age",                    "type": "number", "colSpan": 1 },
+    { "section": "personal", "field": "height",       "label": "Height",                 "type": "text",   "colSpan": 1 },
+    { "section": "personal", "field": "weight",       "label": "Weight",                 "type": "text",   "colSpan": 1 },
+    { "section": "personal", "field": "complexion",   "label": "Complexion",             "type": "text",   "colSpan": 1 },
+    { "section": "personal", "field": "denomination", "label": "Denomination",           "type": "text",   "colSpan": 1, "placeholder": "e.g. Roman Catholic, CSI, Baptist, Pentecostal" },
+    { "section": "personal", "field": "diocese",      "label": "Diocese / Synod",        "type": "text",   "colSpan": 1, "placeholder": "e.g. Diocese of Madras, CSI Madhya Kerala" },
+    { "section": "personal", "field": "parish",       "label": "Parish / Church",        "type": "text",   "colSpan": 2, "placeholder": "e.g. St. Thomas Church, Mylapore" },
+    { "section": "personal", "field": "baptism",      "label": "Baptism",                "type": "text",   "colSpan": 1, "placeholder": "e.g. Baptised - 1996" },
+    { "section": "personal", "field": "confirmation", "label": "Confirmation",           "type": "text",   "colSpan": 1, "placeholder": "e.g. Confirmed - 2012" }
+  ]
+}

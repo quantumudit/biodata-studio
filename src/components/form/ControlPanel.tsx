@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { User, Users, Phone, Upload, ShieldAlert } from 'lucide-react';
-import type { BiodiversityData } from '../../types';
+import type { AnyBiodataData, BiodiversityData, MuslimBiodataData, ChristianBiodataData, ReligionTemplate } from '../../types';
 import { PersonalTab } from './tabs/PersonalTab';
+import { MuslimPersonalTab } from './tabs/MuslimPersonalTab';
+import { ChristianPersonalTab } from './tabs/ChristianPersonalTab';
 import { ProfessionalFamilyTab } from './tabs/ProfessionalFamilyTab';
 import { PreferencesTab } from './tabs/PreferencesTab';
 import { PhotoTab } from './tabs/PhotoTab';
 
 interface ControlPanelProps {
-  data: BiodiversityData;
-  onChange: React.Dispatch<React.SetStateAction<BiodiversityData>> | ((data: BiodiversityData) => void);
+  data: AnyBiodataData;
+  religionTemplate: ReligionTemplate;
+  onChange: React.Dispatch<React.SetStateAction<AnyBiodataData>> | ((data: AnyBiodataData) => void);
 }
 
 type TabKey = 'personal' | 'family' | 'contact' | 'photo';
@@ -20,10 +23,10 @@ const TABS: { key: TabKey; label: string; Icon: React.FC<{ className?: string }>
   { key: 'photo',    label: 'Portrait Photo',         Icon: ({ className }) => <Upload className={className} /> },
 ];
 
-export const ControlPanel: React.FC<ControlPanelProps> = ({ data, onChange }) => {
+export const ControlPanel: React.FC<ControlPanelProps> = ({ data, religionTemplate, onChange }) => {
   const [activeTab, setActiveTab] = useState<TabKey>('personal');
 
-  const update = (updater: (prev: BiodiversityData) => BiodiversityData) => {
+  const update = (updater: (prev: AnyBiodataData) => AnyBiodataData) => {
     try {
       (onChange as any)(updater);
     } catch {
@@ -31,11 +34,11 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({ data, onChange }) =>
     }
   };
 
-  const handleNestedChange = (section: keyof BiodiversityData, field: string, value: string | number) => {
-    update((prev) => ({ ...prev, [section]: { ...(prev[section] as object), [field]: value } }));
+  const handleNestedChange = (section: string, field: string, value: string | number) => {
+    update((prev) => ({ ...prev, [section]: { ...(prev[section as keyof typeof prev] as object), [field]: value } }));
   };
 
-  const handleTopLevelChange = (field: keyof BiodiversityData, value: string) => {
+  const handleTopLevelChange = (field: string, value: string) => {
     update((prev) => ({ ...prev, [field]: value }));
   };
 
@@ -60,12 +63,24 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({ data, onChange }) =>
       </div>
 
       <div className="flex-1 space-y-4">
-        {activeTab === 'personal' && <PersonalTab data={data} onChange={handleNestedChange} />}
-        {activeTab === 'family'   && <ProfessionalFamilyTab data={data} onChange={handleNestedChange} />}
-        {activeTab === 'contact'  && <PreferencesTab data={data} onChange={handleNestedChange} onTopLevelChange={handleTopLevelChange} />}
+        {activeTab === 'personal' && (
+          religionTemplate === 'hindu'
+            ? <PersonalTab data={data as BiodiversityData} onChange={handleNestedChange} />
+            : religionTemplate === 'muslim'
+            ? <MuslimPersonalTab data={data as MuslimBiodataData} onChange={handleNestedChange} />
+            : <ChristianPersonalTab data={data as ChristianBiodataData} onChange={handleNestedChange} />
+        )}
+        {activeTab === 'family'   && <ProfessionalFamilyTab data={data as BiodiversityData} onChange={handleNestedChange} />}
+        {activeTab === 'contact'  && (
+          <PreferencesTab
+            data={data as BiodiversityData}
+            onChange={handleNestedChange}
+            onTopLevelChange={handleTopLevelChange}
+          />
+        )}
         {activeTab === 'photo'    && (
           <PhotoTab
-            data={data}
+            data={data as BiodiversityData}
             onImageChange={(img) => update((prev) => ({ ...prev, image: img }))}
           />
         )}

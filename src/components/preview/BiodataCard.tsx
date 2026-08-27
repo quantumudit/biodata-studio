@@ -1,17 +1,18 @@
 import React from 'react';
-import type { BiodiversityData, LayoutOption, DesignTheme } from '../../types';
+import type { AnyBiodataData, LayoutOption, DesignTheme, ReligionTemplate } from '../../types';
 import { FullLayout } from './FullLayout';
 import { SnapshotLayout } from './SnapshotLayout';
 
 interface BiodataCardProps {
-  data: BiodiversityData;
+  data: AnyBiodataData;
   layout: LayoutOption;
   theme: DesignTheme;
+  religionTemplate: ReligionTemplate;
 }
 
-export const BiodataCard: React.FC<BiodataCardProps> = ({ data, layout, theme }) => {
+export const BiodataCard: React.FC<BiodataCardProps> = ({ data, layout, theme, religionTemplate }) => {
   if (layout === 'full') {
-    return <FullLayout data={data} theme={theme} />;
+    return <FullLayout data={data} theme={theme} religionTemplate={religionTemplate} />;
   }
-  return <SnapshotLayout data={data} theme={theme} />;
+  return <SnapshotLayout data={data} theme={theme} religionTemplate={religionTemplate} />;
 };
