@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { User, Users, Phone, Upload, ShieldAlert } from 'lucide-react';
-import type { AnyBiodataData, BiodiversityData, MuslimBiodataData, ReligionTemplate } from '../../types';
+import type { AnyBiodataData, BiodiversityData, MuslimBiodataData, ChristianBiodataData, ReligionTemplate } from '../../types';
 import { PersonalTab } from './tabs/PersonalTab';
 import { MuslimPersonalTab } from './tabs/MuslimPersonalTab';
+import { ChristianPersonalTab } from './tabs/ChristianPersonalTab';
 import { ProfessionalFamilyTab } from './tabs/ProfessionalFamilyTab';
 import { PreferencesTab } from './tabs/PreferencesTab';
 import { PhotoTab } from './tabs/PhotoTab';
@@ -65,7 +66,9 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({ data, religionTempla
         {activeTab === 'personal' && (
           religionTemplate === 'hindu'
             ? <PersonalTab data={data as BiodiversityData} onChange={handleNestedChange} />
-            : <MuslimPersonalTab data={data as MuslimBiodataData} onChange={handleNestedChange} />
+            : religionTemplate === 'muslim'
+            ? <MuslimPersonalTab data={data as MuslimBiodataData} onChange={handleNestedChange} />
+            : <ChristianPersonalTab data={data as ChristianBiodataData} onChange={handleNestedChange} />
         )}
         {activeTab === 'family'   && <ProfessionalFamilyTab data={data as BiodiversityData} onChange={handleNestedChange} />}
         {activeTab === 'contact'  && (
