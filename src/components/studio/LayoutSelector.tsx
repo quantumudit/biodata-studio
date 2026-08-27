@@ -13,7 +13,7 @@ interface LayoutSelectorProps {
 const RELIGION_OPTIONS: { value: ReligionTemplate; label: string; available: boolean }[] = [
   { value: 'hindu',    label: 'Hindu',     available: true  },
   { value: 'muslim',   label: 'Muslim',    available: true  },
-  { value: 'christian',label: 'Christian', available: false },
+  { value: 'christian',label: 'Christian', available: true  },
 ];
 
 export const LayoutSelector: React.FC<LayoutSelectorProps> = ({

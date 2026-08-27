@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import type { LayoutOption, DesignTheme, ReligionTemplate } from './types';
 import { useBiodataStorage } from './hooks/useBiodataStorage';
 import { useMuslimBiodataStorage } from './hooks/useMuslimBiodataStorage';
+import { useChristianBiodataStorage } from './hooks/useChristianBiodataStorage';
 import { AppHeader } from './components/layout/AppHeader';
 import { StepIndicator } from './components/layout/StepIndicator';
 import { FormView } from './views/FormView';
@@ -12,6 +13,7 @@ import { toPng } from 'html-to-image';
 export default function App() {
   const [hinduBiodata, setHinduBiodata] = useBiodataStorage();
   const [muslimBiodata, setMuslimBiodata] = useMuslimBiodataStorage();
+  const [christianBiodata, setChristianBiodata] = useChristianBiodataStorage();
   const [layout, setLayout] = useState<LayoutOption>('full');
   const [theme, setTheme] = useState<DesignTheme>('natural');
   const [religionTemplate, setReligionTemplate] = useState<ReligionTemplate>('hindu');
@@ -19,8 +21,16 @@ export default function App() {
   const [isDownloading, setIsDownloading] = useState(false);
   const [isInIframe, setIsInIframe] = useState(false);
 
-  const activeBiodata = religionTemplate === 'hindu' ? hinduBiodata : muslimBiodata;
-  const activeSetBiodata = religionTemplate === 'hindu' ? setHinduBiodata : setMuslimBiodata;
+  const activeBiodata = religionTemplate === 'hindu'
+    ? hinduBiodata
+    : religionTemplate === 'muslim'
+    ? muslimBiodata
+    : christianBiodata;
+  const activeSetBiodata = religionTemplate === 'hindu'
+    ? setHinduBiodata
+    : religionTemplate === 'muslim'
+    ? setMuslimBiodata
+    : setChristianBiodata;
 
   useEffect(() => {
     setIsInIframe(window.self !== window.top);
@@ -41,7 +51,9 @@ export default function App() {
   const handleReset = () => {
     const storageKey = religionTemplate === 'hindu'
       ? 'matrimony_biodata_perfect_v2'
-      : 'matrimony_muslim_biodata_v1';
+      : religionTemplate === 'muslim'
+      ? 'matrimony_muslim_biodata_v1'
+      : 'matrimony_christian_biodata_v1';
     if (window.confirm("Restore default sample data? Any uploaded photo or customized text will be replaced.")) {
       localStorage.removeItem(storageKey);
       window.location.reload();
