@@ -1,5 +1,5 @@
 import React from 'react';
-import type { AnyBiodataData, HinduPersonalInfo, MuslimPersonalInfo, DesignTheme, ReligionTemplate, ThemeStyleTokens } from '../../types';
+import type { AnyBiodataData, HinduPersonalInfo, MuslimPersonalInfo, ChristianPersonalInfo, DesignTheme, ReligionTemplate, ThemeStyleTokens } from '../../types';
 import { ThemeOrnament } from './shared/ThemeOrnament';
 import { ThemeAvatarPlaceholder } from './shared/ThemeAvatarPlaceholder';
 import { SnapshotDetailBlock } from './shared/DetailBlock';
@@ -17,9 +17,12 @@ export const SnapshotLayout: React.FC<SnapshotLayoutProps> = ({ data, theme, rel
 
   const hinduPersonal = personal as HinduPersonalInfo;
   const muslimPersonal = personal as MuslimPersonalInfo;
+  const christianPersonal = personal as ChristianPersonalInfo;
 
   const footerText = religionTemplate === 'muslim'
     ? 'We warmly welcome family introductions and Nikah coordination.'
+    : religionTemplate === 'christian'
+    ? 'We warmly welcome family and parish introductions.'
     : 'We warmly invite matching family proposals or horoscope coordination.';
 
   return (
@@ -125,12 +128,20 @@ export const SnapshotLayout: React.FC<SnapshotLayoutProps> = ({ data, theme, rel
                     <SnapshotDetailBlock label="Birth Nakshatra" value={hinduPersonal.nakshatra} theme={theme} />
                     <SnapshotDetailBlock label="Complexion" value={personal.complexion} theme={theme} />
                   </>
-                ) : (
+                ) : religionTemplate === 'muslim' ? (
                   <>
                     <SnapshotDetailBlock label="Sect" value={muslimPersonal.sect} theme={theme} />
                     <SnapshotDetailBlock label="Maslak" value={muslimPersonal.maslak} theme={theme} />
                     <SnapshotDetailBlock label="Religious Practice" value={muslimPersonal.religiosity} theme={theme} />
                     <SnapshotDetailBlock label="Mehr Preference" value={muslimPersonal.mehrPreference} theme={theme} />
+                    <SnapshotDetailBlock label="Complexion" value={personal.complexion} theme={theme} />
+                  </>
+                ) : (
+                  <>
+                    <SnapshotDetailBlock label="Denomination" value={christianPersonal.denomination} theme={theme} />
+                    <SnapshotDetailBlock label="Parish / Church" value={christianPersonal.parish} theme={theme} />
+                    <SnapshotDetailBlock label="Baptism" value={christianPersonal.baptism} theme={theme} />
+                    <SnapshotDetailBlock label="Confirmation" value={christianPersonal.confirmation} theme={theme} />
                     <SnapshotDetailBlock label="Complexion" value={personal.complexion} theme={theme} />
                   </>
                 )}

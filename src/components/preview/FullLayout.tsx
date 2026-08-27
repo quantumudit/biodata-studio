@@ -1,10 +1,11 @@
 import React from 'react';
-import type { AnyBiodataData, HinduPersonalInfo, MuslimPersonalInfo, DesignTheme, ReligionTemplate, ThemeStyleTokens } from '../../types';
+import type { AnyBiodataData, HinduPersonalInfo, MuslimPersonalInfo, ChristianPersonalInfo, DesignTheme, ReligionTemplate, ThemeStyleTokens } from '../../types';
 import { ThemeOrnament } from './shared/ThemeOrnament';
 import { ThemeAvatarPlaceholder } from './shared/ThemeAvatarPlaceholder';
 import { DetailBlock } from './shared/DetailBlock';
 import { HinduPersonalBlock } from './shared/HinduPersonalBlock';
 import { MuslimPersonalBlock } from './shared/MuslimPersonalBlock';
+import { ChristianPersonalBlock } from './shared/ChristianPersonalBlock';
 import { THEME_CONFIG } from '../../data/themeConfig';
 
 interface FullLayoutProps {
@@ -19,6 +20,8 @@ export const FullLayout: React.FC<FullLayoutProps> = ({ data, theme, religionTem
 
   const footerText = religionTemplate === 'muslim'
     ? 'To coordinate a family introduction or request further conversation, you are kindly welcome to reach out.'
+    : religionTemplate === 'christian'
+    ? 'Kindly reach out through family or parish channels for further conversation.'
     : 'To coordinate horoscope checks or request further conversation, you are kindly welcome to reach out.';
 
   return (
@@ -95,7 +98,9 @@ export const FullLayout: React.FC<FullLayoutProps> = ({ data, theme, religionTem
               </div>
               {religionTemplate === 'hindu'
                 ? <HinduPersonalBlock personal={personal as HinduPersonalInfo} styles={styles} />
-                : <MuslimPersonalBlock personal={personal as MuslimPersonalInfo} styles={styles} />}
+                : religionTemplate === 'muslim'
+                ? <MuslimPersonalBlock personal={personal as MuslimPersonalInfo} styles={styles} />
+                : <ChristianPersonalBlock personal={personal as ChristianPersonalInfo} styles={styles} />}
             </div>
 
             <div className="space-y-2">
