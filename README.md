@@ -139,6 +139,30 @@ load. The Reset button restores the pre-loaded sample data for the active religi
 
 ---
 
+## Why This App?
+
+Arranged marriages are common in India. Even with matchmaking platforms around, the search often starts locally -- and the first thing you need is a "biodata."
+
+What typically happens: someone texts the candidate's details, then sends a separate message with photos. Those messages have typos, leave out key information, or include irrelevant details. At best the candidate puts together something like a resume themselves; more often a friend, relative, or colleague does it -- which is a task in itself.
+
+This app removes that friction. Fill in your details once and get a compact square snapshot (ideal for WhatsApp) or a full A4 layout when you want to share more. Both export as an image or PDF and can be shared immediately on any messaging app.
+
+Hobbies, habits, and lifestyle details all matter -- but this app is deliberately focused: quick, simple, and covering only the essentials. You can always follow up with extra photos or a fuller profile. Think of this as your first-impression card, enough to get shortlisted. If there is mutual interest you can share a more detailed profile from a matrimony platform later.
+
+The goal is to get you started -- cleanly and quickly.
+
+---
+
+## Inspiration
+
+I built this after watching my dad and a friend's parent make the same mistakes -- sending haphazard text messages with typos alongside a couple of photos. My dad would ask me whenever he needed a biodata prepared; so did a friend with a non-tech background. A few years earlier my elder brother had asked me to make one, and that time I turned to Canva.
+
+The biodatas others sent to my dad or my friend's father followed the same pattern: a flawed WhatsApp message or, at best, a bland and uninspiring document.
+
+So I decided to build something better.
+
+---
+
 ## Future Scope
 
 ### Planned features
@@ -156,7 +180,15 @@ SnapshotLayout, and App.
 
 ---
 
-## Privacy
+## Privacy and Security
 
-No analytics, no cookies, no external API calls. The app runs entirely in your browser.
-Your data never leaves your device.
+No analytics, no cookies, no external API calls. The app runs entirely in your browser
+and your data never leaves your device. Unlike many websites,
+[the live app](https://quantumudit.github.io/biodata-studio/) shows no ads and requires
+no sign-up. If you would rather keep everything fully offline, clone the repository and
+run it locally via Docker.
+
+**Feature requests:** if you would like a template for another religion or community, or
+have any other idea that fits the app's goal, open an issue on
+[GitHub Issues](https://github.com/quantumudit/biodata-studio/issues). If it aligns with
+the app's purpose it will be considered.
