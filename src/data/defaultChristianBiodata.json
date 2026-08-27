@@ -1,0 +1,39 @@
+{
+  "personal": {
+    "name": "Sarah Thomas",
+    "age": 26,
+    "dob": "June 1998",
+    "height": "5 ft 4 inch (163 cm)",
+    "weight": "55 Kg",
+    "complexion": "Fair",
+    "denomination": "Church of South India (CSI)",
+    "diocese": "Diocese of Madras",
+    "parish": "St. Thomas Church, Mylapore, Chennai",
+    "baptism": "Baptised - June 1998",
+    "confirmation": "Confirmed - March 2013"
+  },
+  "professional": {
+    "education": "B.Tech in Information Technology & MBA",
+    "occupation": "Software Analyst",
+    "company": "Infosys Ltd.",
+    "income": "INR 10,00,000+ per annum",
+    "location": "Chennai, Tamil Nadu (Open to relocate)"
+  },
+  "family": {
+    "fatherName": "Mr. Joseph Thomas",
+    "fatherOccupation": "Retired School Principal",
+    "motherName": "Mrs. Annie Thomas",
+    "motherOccupation": "Homemaker",
+    "siblings": "One Elder Brother (Married)",
+    "familyType": "Nuclear, Middle Class",
+    "nativePlace": "Kottayam, Kerala",
+    "currentLocation": "Chennai, Tamil Nadu"
+  },
+  "contact": {
+    "phone": "+91 98765 00002",
+    "email": "sarah.thomas@example.com",
+    "address": "14, Church Street, Mylapore, Chennai, Tamil Nadu - 600004"
+  },
+  "partnerPreferences": "Seeking a well-educated, God-fearing, and family-oriented Christian partner who values faith, mutual respect, and building a loving home grounded in shared values.",
+  "image": null
+}
