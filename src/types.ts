@@ -65,7 +65,24 @@ export interface MuslimBiodataData {
   image: string | null;
 }
 
-export type AnyBiodataData = BiodiversityData | MuslimBiodataData;
+export interface ChristianPersonalInfo extends BasePersonalInfo {
+  denomination: string;
+  diocese: string;
+  parish: string;
+  baptism: string;
+  confirmation: string;
+}
+
+export interface ChristianBiodataData {
+  personal: ChristianPersonalInfo;
+  professional: ProfessionalInfo;
+  family: FamilyInfo;
+  contact: ContactInfo;
+  partnerPreferences: string;
+  image: string | null;
+}
+
+export type AnyBiodataData = BiodiversityData | MuslimBiodataData | ChristianBiodataData;
 
 export type LayoutOption = 'full' | 'snapshot';
 export type DesignTheme = 'natural' | 'royal' | 'minimalist' | 'sunset' | 'emerald' | 'sapphire';
